@@ -1,38 +1,114 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Aladin&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.container {
+  font-family: "Aladin", cursive;
+  position: relative;
+  width: 100%;
   min-height: 100vh;
+  background-color: rgb(233, 213, 213);
+  overflow: hidden;
+}
+.form-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.fb-form-container {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 400px;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  gap: 15px;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  align-content: center;
+  padding: 15px;
+}
+form {
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: column;
+}
+.signin-signup {
+  width: 700px;
+  border: 1px solid #333;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 5px 18px 23px -4px rgba(0,0,0,0.72);
+}
+.login-header {
+  font-size: 2.2rem;
+  color: #444;
+  margin-bottom: 10px;
+}
+.reset-header{
+  font-size: 1.7rem;
+  text-align: center;
+  color: #444;
+  margin-bottom: 10px;
+}
+.login-form-container {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  gap: 8px;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
 }
 
-.App-link {
-  color: #61dafb;
+.btn {
+  display: flex;
+  gap: 10px;
+  border-radius: 49px;
+  width: 250px;
+  font-size: 10px;
+}
+.img-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.img{
+ width:340px;
+ height: 400px;
+}
+.social-icon {
+  height: 60px;
+  width: 60px;
+  border: 1px solid #333;
+  box-shadow: aquamarine;
+  margin: 0 0.45rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+.social-media {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
