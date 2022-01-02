@@ -22,7 +22,7 @@ export function ForgetPassword() {
     initialValues : {email:""},
     validationSchema: formValidationSchema,
       onSubmit: (values) => {
-        forgot(values).then((x)=>history.push('/resetpassword'))
+        forgot(values).then((x)=>history.push('/reset-password'))
         console.log("onSumit", values);
       },
   })
