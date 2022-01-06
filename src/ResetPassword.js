@@ -6,6 +6,7 @@ import LoginIcon from "@mui/icons-material/Login";
 import resetpassword from "./img/resetpassword.svg";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import { useHistory } from "react-router-dom";
 
 const formValidationSchema = yup.object({
   password: yup
@@ -19,14 +20,26 @@ const formValidationSchema = yup.object({
 });
 
 export function ResetPassword() {
+  const history = useHistory();
   const { handleSubmit, handleChange, handleBlur, values, errors, touched } =
     useFormik({
       initialValues: { password: "", passwordConfirmation: "" },
       validationSchema: formValidationSchema,
       onSubmit: (values) => {
+        Changepassword(values)
         console.log("onSumit", values);
       },
     });
+    const URL = `https://password-change-api.herokuapp.com`;
+    const Changepassword= async(values)=>{
+      fetch(`${URL}/resetpassword`,
+     {
+       method:"POST",
+       body  :JSON.stringify(values),
+       headers:{"Content-Type":"application/json"}
+     }).then((response)=>response.status).then((status)=>(status===200)?history.push('/Message'):null)
+     
+   }
   return (
     <div className="form-container">
       <div className="signin-signup">

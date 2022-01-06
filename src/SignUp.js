@@ -12,32 +12,37 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import Divider from "@mui/material/Divider";
 
-
+// validate form
 const formValidationSchema = yup.object({
+// validate name
   name: yup
     .string()
     .matches(/^[aA-zZ\s]+$/, "Please enter valid name")
     .max(40)
     .required("Name is Required"),
-  email: yup
+  // validate email
+    email: yup
     .string()
     .email("Must be a valid email")
     .max(255)
     .required("Email is required"),
-  password: yup
+  // validate password
+    password: yup
     .string()
     .min(8, "Password must be 8 Character")
     .max(12, "Too Much Password")
     .required("Password is required"),
-  passwordConfirmation: yup
+  // validate confirm password 
+    passwordConfirmation: yup
     .string()
     .oneOf([yup.ref("password"), null], "Passwords must match")
     .required("Password is Requred"),
 });
 
+// signup
 export function SignUp() {
   const history = useHistory();
-
+// formik
   const { handleSubmit, handleChange, handleBlur, values, errors, touched } =
     useFormik({
       initialValues: {
@@ -53,7 +58,7 @@ export function SignUp() {
       },
     });
 
-  const URL = `https://616e488fa83a850017caa8e1.mockapi.io/users`;
+  const URL = `https://password-change-api.herokuapp.com`;
   const Register = async (values) => {
     await fetch(`${URL}/signup`, {
       method: "POST",

@@ -1,3 +1,4 @@
+// importing packages
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import KeyIcon from "@mui/icons-material/Key";
@@ -14,26 +15,34 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import Divider from "@mui/material/Divider";
 
+// form validation using yup
 const formValidationSchema = yup.object({
+
+  //validate email field
   email: yup
     .string()
     .email("Must be a valid email")
     .max(255)
     //.matches(!/^[A-Z0-9._%+-]+@[A-Z0-9+=]+\.[A-Z]{2,}$/i, "Pattern not matched")
     .required("Email is required"),
-  password: yup
+
+    // validte password field
+    password: yup
     .string()
     .min(8, "Password must be 8 character")
     .max(12, "Too much Password")
     .required("Password is required"),
 });
 
+// signin component
 export function Signin() {
   const history = useHistory();
-
+// use formik for the form process
   const { handleChange, handleSubmit, handleBlur, values, errors, touched } =
     useFormik({
+      // give initial value as empty
       initialValues: { email: "", password: "" },
+    //  validation
       validationSchema: formValidationSchema,
       onSubmit: (values) => {
         Login(values).then(()=>history.push("/dashboard"))
@@ -41,7 +50,7 @@ export function Signin() {
       },
     });
 
-    const URL = `https://616e488fa83a850017caa8e1.mockapi.io/users`;
+    const URL = `https://password-change-api.herokuapp.com`;
   const Login = async (values) => {
     await fetch(`${URL}/signin`, {
       method: "POST",

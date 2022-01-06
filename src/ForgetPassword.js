@@ -1,3 +1,4 @@
+// importing packages
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -7,7 +8,7 @@ import forgetpassword from "./img/forgetpassword.svg";
 import {useFormik} from 'formik';
 import * as yup from 'yup';
 import { useHistory } from "react-router-dom";
-
+// validate form using yup
 const formValidationSchema = yup.object({
   email: yup
     .string()
@@ -15,27 +16,29 @@ const formValidationSchema = yup.object({
     .max(255)
     .required("Email is required"),
 });
-
+// forgetpassword
 export function ForgetPassword() {
   const history = useHistory();
+  // 
   const {handleSubmit,handleChange,handleBlur,values,errors,touched}=useFormik({
     initialValues : {email:""},
     validationSchema: formValidationSchema,
       onSubmit: (values) => {
-        forgot(values).then((x)=>history.push('/reset-password'))
-        console.log("onSumit", values);
+        forgot(values)
+        console.log("onSubmit", values);
       },
   })
-
-  const URL = `https://616e488fa83a850017caa8e1.mockapi.io/users`;
-  const forgot=async(values)=>{
-    const forgotresponse=await fetch(`${URL}/forgotpassword`,
+  // const URL = `http://localhost:8000`;
+  const URL = `https://password-change-api.herokuapp.com`;
+  const forgot= (values)=>{
+    fetch(`${URL}/forgetpassword`,
     {
+      mode: 'cors',
       method:"POST",
       body:JSON.stringify(values),
       headers:{'Content-Type':'application/json'}
-    })
-  return  forgotresponse.status
+    }).then(()=>history.push('/reset-password'))
+  
   }
   return (
     <div className="form-container">
