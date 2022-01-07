@@ -71,16 +71,17 @@ function ChangeUrl() {
 function Updatepassword({ id }) {
   const { history } = useHistory();
   console.log(id);
+  // const URL ="http://localhost:8000"
   const URL = `https://password-change-api.herokuapp.com`;
   const Result = (id) => {
     fetch(`${URL}/forgetpassword/verify`, {
       method: "GET",
       headers: { "x-auth-token": id },
     })
-      .then((res) => res.status)
-      .then((status) =>
-        status === 200 ? ()=>history.push(`/resetpassword`) : null
-      );
+      .then((res) => res.status === 200 && window.location.replace(`/resetpassword/${id}`) )
+      // .then((status) =>
+        
+      // );
   };
 
   Result(id);

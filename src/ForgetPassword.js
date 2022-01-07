@@ -33,7 +33,6 @@ export function ForgetPassword() {
   const forgot= (values)=>{
     fetch(`${URL}/forgetpassword`,
     {
-      mode: 'cors',
       method:"POST",
       body:JSON.stringify(values),
       headers:{'Content-Type':'application/json'}

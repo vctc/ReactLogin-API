@@ -30,6 +30,9 @@ export function ResetPassword() {
         console.log("onSumit", values);
       },
     });
+
+  // const URL = `http://localhost:8000`;
+
     const URL = `https://password-change-api.herokuapp.com`;
     const Changepassword= async(values)=>{
       fetch(`${URL}/resetpassword`,
