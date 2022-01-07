@@ -11,7 +11,7 @@ import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import { useHistory, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 
 // const URL=`https://616e488fa83a850017caa8e1.mockapi.io/users`;
 
@@ -69,7 +69,7 @@ function ChangeUrl() {
 
 // updatpassword
 function Updatepassword({ id }) {
-  const { history } = useHistory();
+  // const { history } = useHistory();
   console.log(id);
   // const URL ="http://localhost:8000"
   const URL = `https://password-change-api.herokuapp.com`;
